@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+
+    <a href ="index.html">Home</a>
+    <a href="admin.html">Admin</a>
+    <a href="books.html">Books</a>
+
+<form class ="login-form" id="loginForm" >
+    <h2>Login</h2>
+    <input type="email" id="email"
+    placeholder="Email" required>
+    <input type="password" id="password"
+    placeholder="password" required>
+
+    <button type="submit">Login</button>
+    <p class ="error" id="errorMessage"></p>
+
+</form>
+<script>
+   const loginForm =
+   document.getElementById('loginform');
+   const errorMessage =
+   document.getElementById('errorMessage');
+
+   loginForm.addEventListener('submit',
+    function(event) {
+        event.preventDefault();
+        const email =
+        document.getElementById('email').value;
+        const password =
+        document.getElementById('password').value;
+        //Admin Credential
+        const adminEmail = "admin@empher.com";
+        const adminPassword = "empher@123";
+        //User Credential
+        const userEmail ="user@empher.com";
+        const userPassword = "user@123";
+
+        if(email===adminEmail && password===adminPassword){
+            localStorage.setItem('loginData',JSON.stringify({email}));
+            alert("logged in as Admin.");
+            window.location.href="admin.html";
+        } else if(email ===userEmail && password === userPassord){
+            localStorage.setItem('loginData',JSON.stringify({email}));
+            window.location.href="books.html";
+        } else {
+            errorMessage.textContent="Invalid email or password!";
+        }
+    
+        });
+
+
+   
+</script>
+</body>
+</html>
